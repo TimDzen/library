@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Главная страница</title>
+</head>
+<body>
+    <h1>Главная страница</h1>
+    <ul>
+        {% for book in books %}
+        <li>
+            {{ book.title }} - {{ book.author }}
+            <a href="{{ url_for('genre', genre_id=book.genre_id) }}">Посмотреть жанр</a>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
