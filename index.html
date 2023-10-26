@@ -11,11 +11,13 @@
             {% for book in books %}
             <li>
                 <input type="checkbox" name="book_id" value="{{ book.id }}">
-                <label for="{{ book.id }}">{{ book.title }} - {{ book.genre.name }}</label>
+                <label for="{{ book.id }}">{{ book.title }} - {{book.author}}  жанр  {{ book.genre.name }}
+                </label>
                 <input type="checkbox" id="{{ book.id }}" name="is_read" {% if book.is_read %}checked{% endif %}>
             </li>
             {% endfor %}
         </ul>
+
         <button type="submit">Сохранить</button>
     </form>
 </body>
