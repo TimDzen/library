@@ -1,19 +1,16 @@
-from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import func
-from sqlalchemy.orm import relationship
-
+from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
-
-
 
 
 class Book(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
     author = db.Column(db.String(100))
-    genre_id = db.Column(db.Integer, db.ForeignKey('genre.id'))
-    created_at = db.Column(db.DateTime, nullable=False, default=func.now())
+    genre_id = db.Column(db.Integer,db.ForeignKey('genre.id'))
+    created_at = db.Column(db.DateTime, default=func.now)
+    is_read = db.Column(db.Boolean, default = False)
 
     def __repr__(self):
         return f"User(fullname={self.name!r})"
