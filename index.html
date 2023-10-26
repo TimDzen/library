@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Главная страница</title>
+    <title>Моя библиотека</title>
 </head>
 <body>
-    <h1>Главная страница</h1>
-    <ul>
-        {% for book in books %}
-        <li>
-            {{ book.title }} - {{ book.author }}
-            <a href="{{ url_for('genre', genre_id=book.genre_id) }}">Посмотреть жанр</a>
-        </li>
-        {% endfor %}
-    </ul>
+    <h1>Моя библиотека</h1>
+    <h2>Последние 15 книг:</h2>
+    <form action="/update_status" method="POST">
+        <ul>
+            {% for book in books %}
+            <li>
+                <input type="checkbox" name="book_id" value="{{ book.id }}">
+                <label for="{{ book.id }}">{{ book.title }} - {{ book.genre.name }}</label>
+                <input type="checkbox" id="{{ book.id }}" name="is_read" {% if book.is_read %}checked{% endif %}>
+            </li>
+            {% endfor %}
+        </ul>
+        <button type="submit">Сохранить</button>
+    </form>
 </body>
 </html>
