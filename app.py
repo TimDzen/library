@@ -19,7 +19,7 @@ with app.app_context():
     db.session.commit()
 
     books = []
-    for _ in range(30):
+    for _ in range(15):
         book1 = Book(title='Книга романа {}'.format(_),
                      author='Автор романа {}'.format(_),
                      genre_id=genre1.id,
